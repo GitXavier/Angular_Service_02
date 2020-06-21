@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "app-lesServices"
+    }
+  },
+  "defaultProject": "app-lesServices",
+  "cli": {
+    "analytics": "e19b9605-57ec-4f84-80bf-10d30f33c06f"
+  }
 }

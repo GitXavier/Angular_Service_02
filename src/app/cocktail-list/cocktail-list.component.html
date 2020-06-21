@@ -1,0 +1,9 @@
+<p>cocktail-list works!</p>
+
+<br>
+
+<div *ngFor="let cocktail of cocktails">
+  <h4>{{cocktail.name}}</h4>
+  <p>{{cocktail.price}}</p>
+  <img src="{{cocktail.img}}" style="max-width: 150px;">
+</div>
