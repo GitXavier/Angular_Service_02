@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import { Cocktail } from '../Models/Cocktail';
 import { CocktailService } from '../Cocktail.service';
 
 @Component({
@@ -8,13 +10,25 @@ import { CocktailService } from '../Cocktail.service';
 })
 export class CocktailListComponent implements OnInit {
 
-  public cocktails = [];
+  cocktails: Cocktail[] = [];
 
-  constructor(private cocktailService: CocktailService) { }
+  constructor(private service: CocktailService) { }
 
   ngOnInit(): void {
 
-    this.cocktails = this.cocktailService.getCocktails();
+      this.service.getCocktail().subscribe( cocktails => {
+        console.log(cocktails);
+        this.cocktails = cocktails;
+      });
   }
 
+/*   constructor(private httpClient: HttpClient) { }
+
+  ngOnInit(): void {
+
+    this.httpClient.get<Cocktail[]>("assets/cocktail.json").subscribe( cocktails => {
+      console.log(cocktails);
+      this.cocktails = cocktails;
+    });
+  } */
 }

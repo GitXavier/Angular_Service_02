@@ -1,33 +1,14 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Cocktail } from './Models/Cocktail';
 
+@Injectable({ providedIn: 'root'})
 
-@Injectable({
-  providedIn: 'root'
-})
 export class CocktailService {
 
-  cocktails = [
-    {
-      name: 'Bora Bora sans alcool',
-      price: '12€',
-      img: 'https://zupimages.net/up/20/25/3cf4.jpg'
-    },
-    {
-      name: 'Cocktail sans alcool ananas citron, orange et grenadine',
-      price: '10€',
-      img: 'https://zupimages.net/up/20/25/ojq4.jpg'
-    },
-    {
-      name: 'Rainbow cocktail sans alcool',
-      price: '45€',
-      img: 'https://zupimages.net/up/20/25/nq18.jpg'
-    }
-  ];
-
-  constructor() { }
-
-  public getCocktails() {
-    return this.cocktails;
+  constructor(private httpclient: HttpClient) { }
+  public getCocktail(): Observable<Cocktail[]> {
+    return this.httpclient.get<Cocktail[]>('assets/cocktail.json');
   }
-
 }
